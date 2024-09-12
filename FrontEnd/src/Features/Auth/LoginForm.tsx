@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { logoDark } from "../../assets/index";
 
 const LoginForm: React.FC = () => (
@@ -10,9 +11,12 @@ const LoginForm: React.FC = () => (
           alt="Bannari Amman Institute of Technology Logo"
           className="mb-4"
         />
-        <button className="bg-blue-500 text-white text-sm py-2 px-4 rounded-full hover:bg-blue-600 w-full focus:ring-2 focus:ring-blue-500 focus:outline-none">
+        <Link
+          className="bg-blue-500 text-white text-sm py-2 px-4 rounded-full hover:bg-blue-600 w-full focus:ring-2 focus:ring-blue-500 focus:outline-none text-center"
+          to={"/dashboard"}
+        >
           Google Sign In
-        </button>
+        </Link>
         <p className="text-gray-400 mt-4 text-sm text-center">
           Sign in with your BIT account
         </p>
