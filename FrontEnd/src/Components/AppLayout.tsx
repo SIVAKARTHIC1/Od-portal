@@ -8,8 +8,7 @@ const Layout: React.FC = () => (
       <NavBar isStudent={true} />
     </aside>
     <main className="basis-[80%] flex flex-col h-full">
-      {/* <header className="py-5 bg-secondary w-full">header</header> */}
-      <Header/>
+      <Header />
       <section className="flex-1 py-8 px-10 overflow-auto bg-primary">
         <Outlet />
       </section>

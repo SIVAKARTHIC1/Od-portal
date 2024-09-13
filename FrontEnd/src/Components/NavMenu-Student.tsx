@@ -2,14 +2,14 @@ import { NavLink } from "react-router-dom";
 import {
   HiOutlineHome,
   HiOutlineClipboardCheck,
-  HiOutlineClipboardList
+  HiOutlineClipboardList,
 } from "react-icons/hi";
 
 const NavMenuStudent = () => (
   <ul className="w-full flex gap-5 flex-col">
     <li className="w-full">
       <NavLink
-        to="/dashboard"
+        to="/home"
         className={({ isActive }) =>
           `px-12 py-3 cursor-pointer flex items-center gap-2 hover:bg-hover ${
             isActive ? "bg-hover" : ""
@@ -29,7 +29,7 @@ const NavMenuStudent = () => (
           }`
         }
       >
-        <HiOutlineClipboardList/>
+        <HiOutlineClipboardList />
         Apply-OD
       </NavLink>
     </li>

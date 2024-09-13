@@ -1,6 +1,11 @@
 import Layout from "./Components/AppLayout";
-import PageNotFound from "./Components/PageNotFound";
-import LoginForm from "./Features/Auth/LoginForm";
+import PageNotFound from "./pages/PageNotFound";
+import Dashboard from "./pages/Faculty/Dashboard";
+import OdForm from "./Features/OnDuty/OdForm";
+import OdTable from "./Features/OnDuty/OdTable";
+import Login from "./pages/Login";
+import Home from "./pages/Student/Home";
+import OdDetail from "./Features/OnDuty/OdDetail";
 import "./styles/index.css";
 import {
   createBrowserRouter,
@@ -13,11 +18,10 @@ import {
 const route = createBrowserRouter(
   createRoutesFromElements(
     <Route>
-      <Route path="/" element={<Navigate to={"/login"} />} />
-      <Route path={"login"} element={<LoginForm />} />
+      <Route path="/" element={<Navigate to={"/dashboard"} />} />
+      <Route path={"login"} element={<Login />} />
       <Route element={<Layout />}>
-        <Route path="dashboard" index element={<div>hello</div>} />
-        <Route path="onDuty" index element={<div>onduty</div>} />
+      
       </Route>
       <Route path={"*"} element={<PageNotFound />} />
     </Route>
