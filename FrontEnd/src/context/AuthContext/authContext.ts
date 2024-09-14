@@ -3,6 +3,7 @@ import { createContext, useContext } from "react";
 interface user {
   name: string;
   role: string;
+  img: string;
 }
 
 interface AuthContextType {

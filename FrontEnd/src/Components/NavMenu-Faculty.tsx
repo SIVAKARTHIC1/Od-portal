@@ -5,7 +5,7 @@ const NavMenuFaculty = () => (
   <ul className="w-full flex gap-5 flex-col">
     <li className="w-full">
       <NavLink
-        to="/dashboard"
+        to="/faculty/dashboard"
         className={({ isActive }) =>
           `px-12 py-3 cursor-pointer flex items-center gap-2 hover:bg-hover ${
             isActive ? "bg-hover" : ""
@@ -18,7 +18,7 @@ const NavMenuFaculty = () => (
     </li>
     <li>
       <NavLink
-        to={"od-approvals"}
+        to={"/faculty/od-approvals"}
         className={({ isActive }) =>
           `px-12 py-3 cursor-pointer flex items-center gap-2 hover:bg-hover ${
             isActive ? "bg-hover" : ""
