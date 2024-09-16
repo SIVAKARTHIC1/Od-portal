@@ -1,5 +1,5 @@
 import { Navigate, Outlet } from "react-router-dom";
-import { useAuthContext } from "../context/AuthContext/authContext";
+import { useAuthContext } from "../context/authProvider";
 
 interface ProtectedRouteProps {
   requiredRole: string;
@@ -7,7 +7,7 @@ interface ProtectedRouteProps {
 
 const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ requiredRole }) => {
   const { user, isLoading } = useAuthContext();
-console.log(requiredRole)
+  console.log(requiredRole);
   if (isLoading) {
     return <div>Loading...</div>;
   }

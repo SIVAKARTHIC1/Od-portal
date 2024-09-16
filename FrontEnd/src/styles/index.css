@@ -4,10 +4,44 @@
 @tailwind components;
 @tailwind utilities;
 
-*{
-    font-family: "Poppins", system-ui;
-    /* background-color: #8b8d8f; */
+* {
+  font-family: "Poppins", system-ui;
 }
-.active{
-    background-color: aqua;
+
+.rdrDateDisplayWrapper {
+  background-color: #191d23 !important;
+}
+
+.rdrDateDisplayItem {
+  background-color: #292c30 !important;
+  color: rgb(83, 82, 82) !important;
+}
+.rdrMonthPicker select ,.rdrYearPicker select{
+  color: rgb(170, 169, 169) !important;
+}
+
+.rdrMonthsVertical {
+  background-color: #272b31 ;
+  color: white !important;
+}
+.rdrMonthAndYearWrapper {
+  background-color: #2e3238;
+}
+
+.rdrDayDisabled {
+  background-color: #292c30  !important ;
+  cursor: not-allowed;
+}
+
+.rdrNextPrevButton {
+  background-color: #a3a4a5 !important;
+}
+.rdrDayNumber span {
+  color: rgb(190, 189, 189) !important;
+}
+
+.rdrStartEdge,
+.rdrInRange,
+.rdrEndEdge {
+  background-color: #4e5053 !important;
 }

@@ -1,4 +1,4 @@
-import { useAuthContext } from "../../context/AuthContext/authContext";
+import { useAuthContext } from "../../context/authProvider";
 
 const UserAvatar = () => {
   const {user} = useAuthContext()

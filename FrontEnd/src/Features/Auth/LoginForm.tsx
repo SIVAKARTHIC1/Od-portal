@@ -1,13 +1,9 @@
 import { Link } from "react-router-dom";
 import { logoDark } from "../../assets/index";
-import { useGoogleLogin } from "@react-oauth/google";
+import useLogin from "./useLogin";
 
 const LoginForm: React.FC = () => {
-  const login = useGoogleLogin({
-    onSuccess: (tokenResponse) => console.log(tokenResponse),
-    onError: (err) => console.log(err),
-  });
-
+  const { login } = useLogin();
   return (
     <div className="bg-gray-800 text-gray-300 p-10 rounded-md shadow-lg max-w-sm w-full">
       <div className="flex flex-col items-center gap-2">

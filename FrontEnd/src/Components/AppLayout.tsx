@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
 import NavBar from "./NavBar";
 import Header from "./Header";
-import { useAuthContext } from "../context/AuthContext/authContext";
+import { useAuthContext } from "../context/authProvider";
 
 const Layout: React.FC = () => {
   const { user } = useAuthContext();

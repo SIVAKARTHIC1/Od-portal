@@ -15,7 +15,8 @@ import OdForm from "./Features/OnDuty/OdForm";
 import OdDetail from "./Features/OnDuty/OdDetail";
 import OdTable from "./Features/OnDuty/OdTable";
 import Dashboard from "./pages/Faculty/Dashboard";
-import { useAuthContext } from "./context/AuthContext/authContext";
+import { useAuthContext } from "./context/authProvider";
+import Od from "./pages/Faculty/Od";
 
 const RoleBasedRedirect = () => {
   const { user } = useAuthContext();
@@ -47,7 +48,7 @@ const route = createBrowserRouter(
           element={<ProtectedRoute requiredRole="faculty" />}
         >
           <Route path="dashboard" index element={<Dashboard />} />
-          <Route path="od-approvals" element={<OdTable />} />
+          <Route path="od-approvals" element={<Od />} />
           <Route path="od/:id" element={<OdDetail />} />
         </Route>
 
