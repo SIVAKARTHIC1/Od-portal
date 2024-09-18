@@ -6,7 +6,7 @@ interface ProtectedRouteProps {
 }
 
 const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ requiredRole }) => {
-  const { user, isLoading } = useAuthContext();
+  const {state:{user,isLoading}} = useAuthContext();
   console.log(requiredRole);
   if (isLoading) {
     return <div>Loading...</div>;

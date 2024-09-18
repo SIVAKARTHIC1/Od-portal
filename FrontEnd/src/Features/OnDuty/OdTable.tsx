@@ -17,6 +17,7 @@ const OdTable = () => {
         <th>From Date</th>
         <th>To Date</th>
         <th>Status</th>
+        <th></th>
       </Table.TableHead>
       <Table.TableBody
         data={data || []}

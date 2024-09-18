@@ -4,7 +4,9 @@ import Header from "./Header";
 import { useAuthContext } from "../context/authProvider";
 
 const Layout: React.FC = () => {
-  const { user } = useAuthContext();
+  const {
+    state: { user },
+  } = useAuthContext();
 
   return (
     <div className="flex h-screen text-secondary-text">

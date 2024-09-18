@@ -1,7 +1,7 @@
 import { useAuthContext } from "../../context/authProvider";
 
 const UserAvatar = () => {
-  const {user} = useAuthContext()
+  const {state:{user}} = useAuthContext()
   return (
     <div className="flex items-center gap-3">
     <div className="h-[34px] w-[34px] rounded-full overflow-hidden">

@@ -16,8 +16,7 @@ interface user {
 interface AuthContextType {
   user: user | null;
   isLoading: boolean;
-  error: string | null;
-  dispatch: Dispatch<Action>;
+  error: string;
 }
 
 type Action =
@@ -29,22 +28,21 @@ type Action =
 const initialState: AuthContextType = {
   user: {
     name: "gokul",
-    role: "faculty",
+    role: "student",
     img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQNvWDvQb_rCtRL-p_w329CtzHmfzfWP0FIw&s",
   },
   isLoading: false,
-  error: null,
-  dispatch: () => null,
+  error: "",
 };
 
 function reducer(state: AuthContextType, action: Action): AuthContextType {
   switch (action.type) {
     case "user/Login":
-      return { ...state, user: action.payload, isLoading: false, error: null };
+      return { ...state, user: action.payload, isLoading: false, error: "" };
     case "user/Logout":
-      return { ...state, user: null, isLoading: false, error: null };
+      return { ...state, user: null, isLoading: false, error: "" };
     case "user/loading":
-      return { ...state, isLoading: true, error: null };
+      return { ...state, isLoading: true, error: "" };
     case "user/error":
       return { ...state, isLoading: false, error: action.payload };
     default:
@@ -52,7 +50,10 @@ function reducer(state: AuthContextType, action: Action): AuthContextType {
   }
 }
 
-const AuthContext = createContext<AuthContextType | undefined>(undefined);
+const AuthContext = createContext<{
+  state: AuthContextType;
+  dispatch: Dispatch<Action>;
+}>({ state: initialState, dispatch: () => null });
 
 const useAuthContext = () => {
   const context = useContext(AuthContext);
@@ -66,10 +67,10 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const { user, isLoading, error } = state;
+  // const { user, isLoading, error } = state;
 
   return (
-    <AuthContext.Provider value={{ user, isLoading, error, dispatch }}>
+    <AuthContext.Provider value={{ state, dispatch }}>
       {children}
     </AuthContext.Provider>
   );

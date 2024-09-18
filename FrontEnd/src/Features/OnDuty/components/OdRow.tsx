@@ -1,4 +1,7 @@
-import React from "react";
+import { HiEllipsisVertical } from "react-icons/hi2";
+import { HiEye } from "react-icons/hi";
+import { useAuthContext } from "../../../context/authProvider";
+import { useNavigate } from "react-router-dom";
 
 interface StatusToTagType {
   pending: string;
@@ -28,10 +31,10 @@ interface OdRowProps {
 
 const OdRow: React.FC<OdRowProps> = ({ data }) => {
   const statusClass = statusToTagName[data.approvalStatus];
-  console.log(statusClass);
-
+  const isStudent = useAuthContext().state?.user?.role == "student";
+   const navigate=useNavigate()
   return (
-    <tr className="text-base px-3 border-b border-gray-800 text-gray-500">
+    <tr className="text-sm px-3 border-b border-gray-800 text-gray-500">
       <td className="p-5">
         <input type="checkbox" />
       </td>
@@ -63,10 +66,21 @@ const OdRow: React.FC<OdRowProps> = ({ data }) => {
       <td className="font-semibold text-gray-100">
         <span
           className={`${statusClass}
-            text-white px-3 py-1 rounded-md`}
+            text-gray-300 px-3 py-1 rounded-md`}
         >
           {data.approvalStatus}
         </span>
+      </td>
+      <td className="px-2">
+        {isStudent ? (
+          <span className="px-1 py-2 rounded-md flex items-center justify-center bg-secondary  cursor-pointer" onClick={()=>navigate(`/student/od/fdfd`)}>
+            <HiEye />
+          </span>
+        ) : (
+          <span className="px-1 py-2 rounded-md flex items-center justify-center bg-secondary  cursor-pointer">
+            <HiEllipsisVertical />
+          </span>
+        )}
       </td>
     </tr>
   );

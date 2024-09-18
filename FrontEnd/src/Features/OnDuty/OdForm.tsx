@@ -2,7 +2,7 @@ import DatePicker from "./components/DatePicker";
 
 const OdForm = () => (
   <>
-    <div className="flex text-golden p-4 gap-4">
+    <div className="flex text-golden p-4 gap-4 w-full">
       {/* Right Section - Multiple Inputs */}
       <div className="basis-[75%] bg-secondary rounded-md flex flex-col gap-6 px-6 py-10">
         {/* Row with two inputs */}

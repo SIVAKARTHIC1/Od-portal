@@ -16,7 +16,6 @@ const LoginForm: React.FC = () => {
         <Link
           onClick={() => login()}
           className="bg-blue-500 text-white text-sm py-2 px-4 rounded-full hover:bg-blue-600 w-full focus:ring-2 focus:ring-blue-500 focus:outline-none text-center"
-          to={""}
         >
           Google Sign In
         </Link>
