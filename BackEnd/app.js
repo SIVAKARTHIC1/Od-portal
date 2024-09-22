@@ -1,12 +1,20 @@
-const express=require("express")
+const express = require("express");
+const morgan = require("morgan");
+const EventRoute = require("./Features/Events/eventRoute");
+const AppError = require("./errors/AppError");
+const ErrorController = require("./errors/ErrorController");
 
-const app=express()
+const app = express();
 
-app.use("/od",function(req,res,next){
-    res.status(200).json({
-        status:"success",
-        message:"req on the url /od"
-    })
-})
+app.use(express.json());
+app.use(morgan("dev"));
 
-module.exports=app
+app.use("/api/v1/events", EventRoute);
+
+app.use("*", (req, res, next) => {
+  next(new AppError("wrong endpoint", 404));
+});
+
+app.use(ErrorController);
+
+module.exports = app;
