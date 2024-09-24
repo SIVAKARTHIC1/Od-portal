@@ -22,7 +22,7 @@ const RoleBasedRedirect = () => {
   const {
     state: { user },
   } = useAuthContext();
-
+console.log(user)
   if (!user) {
     return <Navigate to="/login" />;
   }
@@ -40,6 +40,7 @@ const RoleBasedRedirect = () => {
 
 const route = createBrowserRouter(
   createRoutesFromElements(
+    
     <Route>
       <Route path="/" element={<RoleBasedRedirect />} />
       <Route path="login" element={<Login />} />

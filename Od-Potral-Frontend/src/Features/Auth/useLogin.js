@@ -1,6 +1,7 @@
 import { useGoogleLogin } from "@react-oauth/google";
 import { useAuthContext } from "../../context/authProvider";
 import { useNavigate } from "react-router-dom";
+import { apiLogin } from "../../Services/apiAuth";
 
 function useLogin() {
   const { dispatch } = useAuthContext();
@@ -24,13 +25,23 @@ function useLogin() {
         }
 
         const userInfo = await response.json();
-        console.log(userInfo);
+
+        const { user, token } = await apiLogin(userInfo.email);
+        console.log(userInfo.email, user, token);
+        localStorage.setItem("user", JSON.stringify({
+          id: user?._id,
+          name: user?.name,
+          img: userInfo?.picture,
+          role: user?.role,
+        }));
+        localStorage.setItem("token", token);
         dispatch({
           type: "user/Login",
           payload: {
-            name: userInfo.name,
-            img: userInfo.picture,
-            role: "faculty",
+            id: user?._id,
+            name: user?.name,
+            img: userInfo?.picture,
+            role: user?.role,
           },
         });
         navigate("/");
