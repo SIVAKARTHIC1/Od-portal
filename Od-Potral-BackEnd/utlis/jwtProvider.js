@@ -5,4 +5,7 @@ exports.createToken = (id) => {
   return token;
 };
 
-exports.verifyToken = (token) => {};
+exports.decodeToken = (token) => {
+  const jwtObj = jwt.verify(token, "this is my secret string");
+  return jwtObj;
+};

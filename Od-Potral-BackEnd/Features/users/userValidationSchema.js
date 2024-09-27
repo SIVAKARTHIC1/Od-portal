@@ -1,6 +1,5 @@
 const Joi = require("joi");
 
-// Joi validation schema for user creation
 const userValidation = Joi.object({
   name: Joi.string().required(),
   rollNo: Joi.string().required(),
