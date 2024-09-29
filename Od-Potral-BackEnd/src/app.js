@@ -1,11 +1,14 @@
 const express = require("express");
 const morgan = require("morgan");
 const cors = require("cors");
-const EventRoute = require("./Features/Events/eventRoute");
-const userRoute = require("./Features/users/userRoute");
+
 const AppError = require("./errors/AppError");
 const ErrorController = require("./errors/ErrorController");
+
+const EventRoute = require("./Features/Events/eventRoute");
+const userRoute = require("./Features/users/userRoute");
 const authRoute = require("./Features/auth/authRoute");
+const odRoute = require("./Features/OD/ODRoute");
 
 const app = express();
 
@@ -16,6 +19,7 @@ app.use(morgan("dev"));
 app.use("/api/v1/events", EventRoute);
 app.use("/api/v1/users", userRoute);
 app.use("/api/v1/auth", authRoute);
+app.use("/api/v1/od", odRoute);
 
 app.use("*", (req, res, next) => {
   next(new AppError("wrong endpoint", 404));

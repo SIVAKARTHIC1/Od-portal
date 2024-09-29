@@ -1,10 +1,12 @@
-const ODService = require("../services/odService");
-const catchControllerError = require("../utils/catchControllerError");
+const ODService = require("./OD.service");
+const catchControllerError = require("../../errors/AsyncControllerErrorHandler");
+const AppError = require("../../errors/AppError");
 
 const getAllODs = catchControllerError(async (req, res, next) => {
   const ods = await ODService.getAllODs();
   res.status(200).json({
     status: "success",
+    result:ods.length,
     data: ods,
   });
 });
@@ -28,7 +30,8 @@ const createOD = catchControllerError(async (req, res, next) => {
     !odData.toDate ||
     !odData.fromTime ||
     !odData.toTime ||
-    !odData.event
+    (odData.odType === "event" && !odData.event) ||
+    (odData.odType === "otherActivity" && !odData.reason)
   ) {
     throw new AppError("All required fields must be filled", 400);
   }
@@ -58,8 +61,9 @@ const approveOD = catchControllerError(async (req, res, next) => {
 });
 
 const rejectOD = catchControllerError(async (req, res, next) => {
-  const { reason } = req.body;
-  const od = await ODService.rejectOD({ id: req.params.odId, reason });
+  const { rejectedReason } = req.body;
+  console.log(rejectedReason)
+  const od = await ODService.rejectOD({ id: req.params.odId, reason:rejectedReason });
   res.status(200).json({
     status: "success",
     data: od,

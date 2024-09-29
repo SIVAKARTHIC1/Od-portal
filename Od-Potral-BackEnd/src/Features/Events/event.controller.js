@@ -1,4 +1,4 @@
-const EventService = require("./eventService");
+const EventService = require("./event.service");
 const catchControllerError = require("../../errors/AsyncControllerErrorHandler");
 
 exports.getEvents = catchControllerError(async (req, res, next) => {

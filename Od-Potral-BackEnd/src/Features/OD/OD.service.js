@@ -1,7 +1,7 @@
-const OD = require("../models/OD");
-const catchServiceError = require("../utils/catchServiceError");
-const AppError = require("../utils/AppError");
-const { getUserById } = require("../users/userService");
+const OD = require("./OD.model");
+const catchServiceError = require("../../errors/AsyncServiceErrorHandler");
+const AppError = require("../../errors/AppError");
+// const { getUserById } = require("../users/userService");
 
 const getAllODs = catchServiceError(async () => {
   const ods = await OD.find().populate("student mentor event");

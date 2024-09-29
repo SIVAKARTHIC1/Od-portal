@@ -1,4 +1,4 @@
-const userService = require("./userService");
+const userService = require("./user.service");
 const catchControllerError = require("../../errors/AsyncControllerErrorHandler");
 
 // Create a new user

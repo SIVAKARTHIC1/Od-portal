@@ -1,5 +1,5 @@
 const catchControllerError = require("../../errors/AsyncControllerErrorHandler");
-const { findUser } = require("./authService");
+const { findUser } = require("./auth.service");
 
 exports.login = catchControllerError(async (req, res) => {
   const { email } = req.body;

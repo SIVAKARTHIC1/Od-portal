@@ -1,5 +1,5 @@
-const User = require("./userModel");
-const catchServiceError = require("../../errors/AsyncServiceErrorHandler");
+const User = require("./user.model");
+const catchServiceError = require("../../../errors/AsyncServiceErrorHandler");
 const userValidation = require("./userValidationSchema");
 
 exports.createUser = catchServiceError(async (userData) => {
