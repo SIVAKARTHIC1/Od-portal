@@ -1,5 +1,5 @@
 const express = require("express");
-const ODController = require("./ODController");
+const ODController = require("./OD.controller");
 
 const odRoute = express.Router();
 

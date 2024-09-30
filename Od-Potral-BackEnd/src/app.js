@@ -3,12 +3,12 @@ const morgan = require("morgan");
 const cors = require("cors");
 
 const AppError = require("./errors/AppError");
-const ErrorController = require("./errors/ErrorController");
+const ErrorController = require("./errors/Error.controller");
 
-const EventRoute = require("./Features/Events/eventRoute");
-const userRoute = require("./Features/users/userRoute");
-const authRoute = require("./Features/auth/authRoute");
-const odRoute = require("./Features/OD/ODRoute");
+const EventRoute = require("./Features/Events/event.route");
+const userRoute = require("./Features/users/user.route");
+const authRoute = require("./Features/auth/auth.route");
+const odRoute = require("./Features/OD/OD.route");
 
 const app = express();
 

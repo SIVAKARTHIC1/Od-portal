@@ -5,7 +5,7 @@ const {
   updateEventById,
   getEventById,
   deleteEventById,
-} = require("./eventController");
+} = require("./event.controller");
 
 const EventRoute = express.Router();
 

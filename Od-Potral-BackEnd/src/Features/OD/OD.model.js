@@ -63,7 +63,7 @@ const odSchema = new mongoose.Schema({
     // Only required when `odType` is "otherActivity"
     required: function() {
       return this.odType === "otherActivity";
-    },
+    },      
   },
   approvalStatus: {
     type: String,
