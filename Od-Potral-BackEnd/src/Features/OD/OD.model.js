@@ -55,7 +55,7 @@ const odSchema = new mongoose.Schema({
   },
   odType: {
     type: String,
-    enum: ["event", "otherActivity"],
+    enum: ["event", "others"],
     required: true,
   },
   reason: {

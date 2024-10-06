@@ -1,9 +1,11 @@
-const User = require('../Features/users/userModel');
+const User = require("../Features/users/user.model");
 
 async function createUsers(role, num) {
-  const validRoles = ['student', 'faculty'];
+  const validRoles = ["student", "faculty"];
   if (!validRoles.includes(role)) {
-    throw new Error('Invalid role provided. Role must be either "student" or "mentor".');
+    throw new Error(
+      'Invalid role provided. Role must be either "student" or "faculty".'
+    );
   }
 
   const users = Array.from({ length: num }, (_, i) => {
@@ -20,7 +22,7 @@ async function createUsers(role, num) {
 
   console.log(`Creating ${num} users with role ${role}...`);
   await User.insertMany(users); // Insert the users into the database
-  console.log('Users created successfully.');
+  console.log("Users created successfully.");
 }
 
 module.exports = createUsers;

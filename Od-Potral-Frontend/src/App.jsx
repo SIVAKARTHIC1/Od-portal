@@ -60,7 +60,7 @@ const route = createBrowserRouter(
           element={<ProtectedRoute requiredRole="student" />}
         >
           <Route path="home" index element={<Home />} />
-          <Route path="od-approvals" element={<OdStudent />} />
+          <Route path="od" element={<OdStudent />} />
           <Route path="od/:id" element={<OdDetail />} />
           <Route path="od-apply" element={<OdApply />} />
         </Route>

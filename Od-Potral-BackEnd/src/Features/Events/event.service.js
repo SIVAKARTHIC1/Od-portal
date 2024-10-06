@@ -1,7 +1,7 @@
 const EventModel = require("./event.model");
-const catchServiceError = require("../../../errors/AsyncServiceErrorHandler");
+const catchServiceError = require("../../errors/AsyncServiceErrorHandler");
 const { eventValidationSchema } = require("./eventValidationSchema");
-const AppError = require("../../../errors/AppError");
+const AppError = require("../../errors/AppError");
 
 exports.getAllEvents = catchServiceError(async () => {
   const events = await EventModel.find();
@@ -33,8 +33,6 @@ exports.updateEventById = catchServiceError(async ({ eventId, eventData }) => {
     new: true,
     runValidators: true,
   });
-
-  console.log(updatedEvent);
 
   if (!updatedEvent) {
     throw new AppError("Event not found or could not be updated", 404);

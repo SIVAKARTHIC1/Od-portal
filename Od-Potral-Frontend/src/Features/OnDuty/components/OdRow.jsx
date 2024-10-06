@@ -2,6 +2,7 @@ import { HiEllipsisVertical } from "react-icons/hi2";
 import { HiEye } from "react-icons/hi";
 import { useAuthContext } from "../../../context/authProvider";
 import { useNavigate } from "react-router-dom";
+import { formatDate } from "../../../Utils/helper";
 
 const statusToTagName = {
   pending: "bg-blue-700",
@@ -21,31 +22,30 @@ const OdRow = ({ data }) => {
       </td>
 
       {/* Name */}
-      <td className="font-semibold">{data.name}</td>
+      <td className="font-semibold">{data?.student?.name}</td>
 
       {/* Roll Number */}
-      <td className="font-medium">{data.rollNumber}</td>
+      <td className="font-medium">{data?.student?.rollNo}</td>
+
+      <td className="font-medium">{data?.student?.year}</td>
 
       {/* Mentor Code */}
-      <td className="font-medium">{data.mentorCode}</td>
-
-      {/* Special Lab Code */}
-      <td className="font-medium">{data.specialLabCode}</td>
-
-      {/* Event Name */}
-      <td className="font-medium">{data.eventName}</td>
+      <td className="font-medium">{data?.mentorCode}</td>
 
       {/* Event Type */}
-      <td className="font-medium">{data.type}</td>
+      <td className="font-medium">{data?.odType}</td>
+
+      {/* Event Name */}
+      <td className="font-medium">{data?.event?.name || "N/A"}</td>
 
       {/* From Date - To Date */}
-      <td className="font-medium">{data.fromDate}</td>
-      <td className="font-medium">{data.toDate}</td>
+      <td className="font-medium">{formatDate(data?.fromDate)}</td>
+      <td className="font-medium">{formatDate(data?.toDate)}</td>
 
       {/* Approval Status */}
       <td className="font-semibold text-gray-100">
         <span className={`${statusClass} text-gray-300 px-3 py-1 rounded-md`}>
-          {data.approvalStatus}
+          {data?.approvalStatus}
         </span>
       </td>
 
@@ -53,7 +53,7 @@ const OdRow = ({ data }) => {
         {isStudent ? (
           <span
             className="px-1 py-2 rounded-md flex items-center justify-center bg-secondary cursor-pointer"
-            onClick={() => navigate(`/student/od/fdfd`)}
+            onClick={() => navigate(`/student/od/${data?._id}`)}
           >
             <HiEye />
           </span>

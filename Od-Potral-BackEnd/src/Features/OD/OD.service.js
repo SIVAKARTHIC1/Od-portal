@@ -4,7 +4,13 @@ const AppError = require("../../errors/AppError");
 // const { getUserById } = require("../users/userService");
 
 const getAllODs = catchServiceError(async () => {
-  const ods = await OD.find().populate("student mentor event");
+  const ods = await OD.find()
+  .populate("student")  // Populate the entire student document
+  .populate("mentor")   // Populate the entire mentor document
+  .populate({
+    path: "event",      // Populate the event field
+    select: "name"      // Only select the name field from the event
+  })
   return ods;
 });
 

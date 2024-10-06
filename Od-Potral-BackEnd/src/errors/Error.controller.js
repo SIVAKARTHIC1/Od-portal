@@ -19,13 +19,14 @@ function DuplicatedError(err, res) {
 function regularError(err, res) {
   if (err.isOperational) {
     res.status(err.statusCode || 500).json({
+      status: "error",
       error: `${err.message}`,
       // error: err,
       stack: err.stack,
     });
   } else {
     res.status(500).json({
-      status: "error",
+      status: "fail",
       error: "something went wrong",
     });
   }

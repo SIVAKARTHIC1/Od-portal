@@ -1,5 +1,5 @@
 const AppError = require("../errors/AppError");
-const userModel = require("../Features/users/userModel");
+const userModel = require("../Features/users/user.model");
 const catchControllerError = require("../errors/AsyncControllerErrorHandler");
 const { decodeToken } = require("../utlis/jwtProvider");
 
@@ -15,6 +15,7 @@ exports.isAuthenticated = catchControllerError(async (req, res, next) => {
     if (!user) {
       return next(new AppError("No user found", 404));
     }
+    console.log(user)
   
     req.user = user;
     next();

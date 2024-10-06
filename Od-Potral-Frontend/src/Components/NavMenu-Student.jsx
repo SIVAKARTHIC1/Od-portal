@@ -35,7 +35,7 @@ const NavMenuStudent = () => (
     </li>
     <li>
       <NavLink
-        to={"/student/od-approvals"}
+        to={"/student/od"}
         className={({ isActive }) =>
           `px-12 py-3 cursor-pointer flex items-center gap-2 hover:bg-hover ${
             isActive ? "bg-hover" : ""

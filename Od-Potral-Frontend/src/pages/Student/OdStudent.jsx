@@ -3,6 +3,7 @@ import OdTable from "../../Features/OnDuty/OdTable";
 
 const OdStudent = () => {
   const navigate = useNavigate();
+ console.log("odstudent")
   return (
     <div className="space-y-5">
       <OdTable />

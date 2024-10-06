@@ -1,4 +1,4 @@
-const eventModel = require("../Features/Events/eventModel");
+const eventModel = require("../Features/Events/event.model");
 
 async function uploadEvents(num) {
   const today = new Date(); // Get the current date
