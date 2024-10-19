@@ -12,12 +12,10 @@ async function uploadEvents(num) {
       Math.floor(Math.random() * 28) + 1 // Random day between 1 and 28
     );
 
-    // Ensure fromDate is in the future
     if (fromDate <= today) {
       fromDate.setFullYear(fromDate.getFullYear() + 1); // Move to next year if it's before today
     }
 
-    // Generate a valid toDate that is on or after fromDate
     const toDate = new Date(
       fromDate.getFullYear(),
       fromDate.getMonth(),
@@ -26,8 +24,8 @@ async function uploadEvents(num) {
 
     return {
       name: `Event ${i + 1}`,
-      fromDate: fromDate,
-      toDate: toDate,
+      startDate: fromDate,
+      endDate: toDate,
       organiser: `College ${Math.floor(Math.random() * 100 + 1)}`,
       location: `City ${Math.floor(Math.random() * 50 + 1)}`,
     };

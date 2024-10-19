@@ -4,7 +4,6 @@ function DuplicatedError(err, res) {
 
   if (match) {
     const duplicateKeyObject = match[1];
-    console.log(duplicateKeyObject);
     res
       .status(err.statusCode || 500)
       .json({ error: `document already exists for ${duplicateKeyObject}` });

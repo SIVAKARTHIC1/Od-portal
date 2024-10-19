@@ -10,12 +10,11 @@ exports.isAuthenticated = catchControllerError(async (req, res, next) => {
 
     const token = req.headers.authorization.split(" ")[1];
     const decoded = decodeToken(token);
-  
     const user = await userModel.findById(decoded.id);
+
     if (!user) {
       return next(new AppError("No user found", 404));
     }
-    console.log(user)
   
     req.user = user;
     next();

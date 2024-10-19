@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const userSchema = new Schema(
@@ -28,17 +28,22 @@ const userSchema = new Schema(
     },
     role: {
       type: String,
-      enum: ['student', 'faculty'],
-      default: 'student',
+      enum: ["student", "faculty"],
+      default: "student",
     },
     Mentor: {
       type: Schema.Types.ObjectId,
-      ref: 'User',  
+      ref: "User",
+    },
+    img: {
+      type: String,
+      default:
+        "https://imgcdn.stablediffusionweb.com/2024/2/24/88cfa19b-b263-4599-a1c5-bb34eb13eb9c.jpg",
     },
   },
   {
-    timestamps: true, 
+    timestamps: true,
   }
 );
 
-module.exports = mongoose.model('User', userSchema);
+module.exports = mongoose.model("User", userSchema);

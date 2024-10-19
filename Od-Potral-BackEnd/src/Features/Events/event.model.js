@@ -7,7 +7,7 @@ const EventSchema = new mongoose.Schema({
     minlength: [3, "Event name must be at least 3 characters long"],
     maxlength: [100, "Event name must be less than 100 characters"],
   },
-  fromDate: {
+  startDate: {
     type: Date,
     required: [true, "Start date is required"],
     validate: [
@@ -19,13 +19,13 @@ const EventSchema = new mongoose.Schema({
       },
       {
         validator: function (value) {
-          return this.toDate ? value <= this.toDate : true;
+          return this.endDate ? value <= this.endDate : true;
         },
         message: "Start date must be before or equal to the end date",
       },
     ],
   },
-  toDate: {
+  endDate: {
     type: Date,
     required: [true, "End date is required"],
   },

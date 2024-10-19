@@ -1,16 +1,18 @@
 const OD = require("./OD.model");
 const catchServiceError = require("../../errors/AsyncServiceErrorHandler");
 const AppError = require("../../errors/AppError");
+const userModel = require("../users/user.model");
+const eventModel = require("../Events/event.model");
 // const { getUserById } = require("../users/userService");
 
 const getAllODs = catchServiceError(async () => {
   const ods = await OD.find()
-  .populate("student")  // Populate the entire student document
-  .populate("mentor")   // Populate the entire mentor document
-  .populate({
-    path: "event",      // Populate the event field
-    select: "name"      // Only select the name field from the event
-  })
+    .populate("student") // Populate the entire student document
+    .populate("mentor") // Populate the entire mentor document
+    .populate({
+      path: "event", // Populate the event field
+      select: "name", // Only select the name field from the event
+    });
   return ods;
 });
 
@@ -23,13 +25,12 @@ const getODById = catchServiceError(async (id) => {
 });
 
 const createOD = catchServiceError(async (odData) => {
-//   if (
-//     !(await getUserById(odData.student)) ||
-//     (await getUserById(odData.mentor))
-//   ) {
-//     throw new AppError("provide valid student and mentor id", 401);
-//   }
-
+  if (
+    odData.odType == "event" &&
+    !(await eventModel.exists({ _id: odData.event }))
+  ) {
+    throw new AppError("Event does not exist", 400);
+  }
   const od = await OD.create(odData);
   return od;
 });

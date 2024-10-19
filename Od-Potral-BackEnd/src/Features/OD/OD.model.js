@@ -48,8 +48,7 @@ const odSchema = new mongoose.Schema({
   event: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Event",
-    // Only required when `odType` is "event"
-    required: function() {
+    required: function () {
       return this.odType === "event";
     },
   },
@@ -60,10 +59,9 @@ const odSchema = new mongoose.Schema({
   },
   reason: {
     type: String,
-    // Only required when `odType` is "otherActivity"
-    required: function() {
+    required: function () {
       return this.odType === "otherActivity";
-    },      
+    },
   },
   approvalStatus: {
     type: String,
@@ -80,7 +78,7 @@ const odSchema = new mongoose.Schema({
   },
 });
 
-// Pre-save hook to validate dates
+
 odSchema.pre("save", function (next) {
   if (this.toDate < this.fromDate) {
     return next(

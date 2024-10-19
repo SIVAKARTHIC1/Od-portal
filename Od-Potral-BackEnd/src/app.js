@@ -1,6 +1,7 @@
 const express = require("express");
 const morgan = require("morgan");
 const cors = require("cors");
+const helmet=require("helmet");
 
 const AppError = require("./errors/AppError");
 const ErrorController = require("./errors/Error.controller");
@@ -15,6 +16,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(morgan("dev"));
+app.use(helmet());
 
 app.use("/api/v1/events", EventRoute);
 app.use("/api/v1/users", userRoute);

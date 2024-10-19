@@ -18,7 +18,7 @@ exports.getAllUsers = catchServiceError(async () => {
 });
 
 exports.getUserById = catchServiceError(async (id) => {
-  return await User.findById(id);
+  return await User.findById(id).populate("Mentor");
 });
 
 exports.updateUserById = catchServiceError(async ({ id, updatedData }) => {

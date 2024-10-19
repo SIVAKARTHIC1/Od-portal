@@ -6,11 +6,11 @@ exports.eventValidationSchema = Joi.object({
       'string.min': 'Event name must be at least 3 characters long',
       'string.max': 'Event name must be less than 100 characters',
     }),
-    fromDate: Joi.date().greater('now').required().messages({
+    startDate: Joi.date().greater('now').required().messages({
       'date.greater': 'Start date must be greater than today',
       'any.required': 'Start date is required',
     }),
-    toDate: Joi.date().min(Joi.ref('fromDate')).required().messages({
+    endDate: Joi.date().min(Joi.ref('startDate')).required().messages({
       'date.min': 'End date must be on or after the start date',
       'any.required': 'End date is required',
     }),
