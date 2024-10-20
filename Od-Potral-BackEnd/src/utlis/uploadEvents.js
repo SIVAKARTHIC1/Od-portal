@@ -31,9 +31,7 @@ async function uploadEvents(num) {
     };
   });
 
-  console.log("Uploading events...");
   await eventModel.insertMany(events);
-  console.log("Events uploaded successfully.");
 }
 
 module.exports = uploadEvents;

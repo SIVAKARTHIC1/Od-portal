@@ -11,7 +11,6 @@ exports.getEvents = catchControllerError(async (req, res, next) => {
 });
 
 exports.postEvent = catchControllerError(async (req, res, next) => {
-  console.log("hello");
   const event = await EventService.createEvent(req.body);
   res.status(201).json({
     status: "success",

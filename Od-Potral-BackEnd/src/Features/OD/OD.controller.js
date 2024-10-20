@@ -21,7 +21,6 @@ const getODById = catchControllerError(async (req, res, next) => {
 
 const createOD = catchControllerError(async (req, res, next) => {
   const odData = req.body;
-  console.log(req.user);
   if (
     (!odData.student && odData.student == req.user.id) ||
     (!odData.mentor && odData.mentor == req.user.Mentor) ||

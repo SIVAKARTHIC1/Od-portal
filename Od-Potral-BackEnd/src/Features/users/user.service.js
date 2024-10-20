@@ -4,7 +4,6 @@ const userValidation = require("./userValidationSchema");
 
 exports.createUser = catchServiceError(async (userData) => {
   const { error, value } = userValidation.validate(userData);
-  console.log(value);
   if (error) {
     throw new Error(`Validation error: ${error.details[0].message}`);
   }

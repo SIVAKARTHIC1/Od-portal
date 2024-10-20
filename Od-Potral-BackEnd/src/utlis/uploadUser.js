@@ -20,9 +20,7 @@ async function createUsers(role, num) {
     };
   });
 
-  console.log(`Creating ${num} users with role ${role}...`);
   await User.insertMany(users); // Insert the users into the database
-  console.log("Users created successfully.");
 }
 
 module.exports = createUsers;

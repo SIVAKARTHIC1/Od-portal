@@ -20,7 +20,6 @@ function regularError(err, res) {
     res.status(err.statusCode || 500).json({
       status: "error",
       error: `${err.message}`,
-      // error: err,
       stack: err.stack,
     });
   } else {

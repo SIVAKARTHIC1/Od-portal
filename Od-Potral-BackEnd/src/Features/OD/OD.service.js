@@ -6,13 +6,10 @@ const eventModel = require("../Events/event.model");
 // const { getUserById } = require("../users/userService");
 
 const getAllODs = catchServiceError(async () => {
-  const ods = await OD.find()
-    .populate("student") // Populate the entire student document
-    .populate("mentor") // Populate the entire mentor document
-    .populate({
-      path: "event", // Populate the event field
-      select: "name", // Only select the name field from the event
-    });
+  const ods = await OD.find().populate("student").populate("mentor").populate({
+    path: "event",
+    select: "name",
+  });
   return ods;
 });
 
@@ -31,6 +28,20 @@ const createOD = catchServiceError(async (odData) => {
   ) {
     throw new AppError("Event does not exist", 400);
   }
+  const overlapFilter = {
+    $or: [{ student: odData.student }, { mentor: odData.mentor }],
+    $and: [
+      { toDate: { $gte: odData.fromDate } },
+      { fromDate: { $lte: odData.toDate } },
+    ],
+  };
+
+  const existingOD = await OD.findOne(overlapFilter);
+
+  if (existingOD) {
+    throw new AppError("An OD already exists within the given date range", 400);
+  }
+
   const od = await OD.create(odData);
   return od;
 });
